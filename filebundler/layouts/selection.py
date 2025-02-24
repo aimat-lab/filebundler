@@ -13,7 +13,6 @@ from filebundler.elements.node_element import NodeElement
 from filebundler.elements.types import ThickVerticalSlider, HeaderWidget, Placeholder
 
 from filebundler.configs import get_line_height, get_true_height
-import intervals as I
 
 # -------------------------------------------
 
@@ -23,7 +22,7 @@ class SelectionLayout(BoxLayout):
 
         # attributes
         self.root_checkbox : Optional[NodeElement] = None
-        self.last_load_range = I.closed(float('-inf'),float('inf'))
+        self.last_load_range = (float('-inf'),float('inf'))
         self.dismiss_popup = None
 
         # GUI elements
@@ -71,8 +70,9 @@ class SelectionLayout(BoxLayout):
 
         vp_ypos = (1-self.scroll_view.scroll_y)*(total_height-vp_height)
         buffer_range = vp_height/2.
-        new_load_range = I.closed(lower=vp_ypos-buffer_range,upper=vp_ypos+vp_height+buffer_range)
+        new_load_range = (vp_ypos-buffer_range,vp_ypos+vp_height+buffer_range)
         unload_range_list = self.last_load_range - new_load_range
+
 
         nodes_to_load = self.root_checkbox.get_nodes_in_interval(node=self.root_checkbox, interval=new_load_range)
         nodes_to_unload = []
@@ -155,3 +155,11 @@ class SelectionLayout(BoxLayout):
     @staticmethod
     def get_header_widget(num_elements: int):
         return HeaderWidget(num_elements= num_elements, format_list=FsNode.xrd_formats)
+
+
+    @staticmethod
+    def subtract_intervals(a : tuple[float, float], b : tuple[float, float]):
+        alower, aupper = a
+        blower, bupper = b
+
+        if bupper >

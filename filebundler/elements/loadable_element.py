@@ -1,11 +1,12 @@
 from __future__ import annotations
 
-from filebundler.elements.node_widget import LabeledCheckBox
 from abc import abstractmethod
-from intervals import Interval
-
-from typing import Optional
+from dataclasses import dataclass
 from typing import List
+from typing import Optional
+
+from filebundler.elements.node_widget import LabeledCheckBox
+
 
 # -------------------------------------------
 
@@ -39,9 +40,7 @@ class LoadableElem:
 
     @staticmethod
     def get_nodes_in_interval(node : LoadableElem, interval : Interval) -> list:
-        start_y = interval.lower
-        end_y = interval.upper
-
+        start_y, end_y = interval
         selected_nodes = []
 
         def dfs(current_node):
@@ -70,4 +69,5 @@ class LoadableElem:
 
     def get_gui_child_nodes(self):
         return [child for child in self.child_nodes if child.root_container]
+
 

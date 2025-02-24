@@ -2,7 +2,7 @@
 name = "databundler"
 version = "0.1.0"
 authors = [{name = "Daniel Hollarek", email = "daniel.hollarek@googlemail.com"}]
-dependencies = ["Kivy","screeninfo", "intervals", "pillow"]
+dependencies = ["Kivy","screeninfo", "pillow"]
 
 [project.optional-dependencies]
 test = ["holytools"]
