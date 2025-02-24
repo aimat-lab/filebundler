@@ -1,22 +1,16 @@
-#[project]
-#name = "myproject"
-#version = "0.1.0"
-#authors = [{name = "Daniel Hollarek", email = "daniel.hollarek@googlemail.com"}]
-#description = "A very good project indeed"
-#readme = "readme.md"
-#dependencies = []
-##dependencies = ["holytools @ git+https://github.com/Somerandomguy10111/holytools"]
-##dependencies = ["holytools @ git+ssh://git@github.com/Somerandomguy10111/holytools", pkg2, pkg3]
-#
-#[project.optional-dependencies]
-#test = ["flask"]
-#
-#[tool.setuptools.packages.find]
-#include = ["myproject*"]   # Only include "myproject" folder in find_package process
-#
-#[project.scripts]
-#cred = "myproject.configs.cred:main" # Use cred in CLI to execute myproject.configs.cred:main
-#
-#[tool.setuptools.package-data]
-#"myproject.fileIO.examples" = ["*"] # Include all non .py files in myproject.file.examples
-#
+[project]
+name = "databundler"
+version = "0.1.0"
+authors = [{name = "Daniel Hollarek", email = "daniel.hollarek@googlemail.com"}]
+dependencies = ["Kivy","screeninfo", "intervals", "pillow"]
+
+[project.optional-dependencies]
+test = ["holytools"]
+
+[tool.setuptools.packages.find]
+include = ["filebundler*"]
+
+[tool.setuptools.package-data]
+"filebundler.resources" = ["*", '*/*', '*/*/*']
+
+
