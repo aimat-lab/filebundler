@@ -3,7 +3,7 @@ import os
 import zipfile, csv
 from typing import List
 
-from filebundler.resources.provider import get_template_csv
+from filebundler.resources import ResourceProvider
 
 
 # -------------------------------------------
@@ -27,7 +27,7 @@ def zip_file_list(path_list: List[str], zipfile_path : str, root_path : str):
 def produce_csv_file(abs_path_list : List[str], target_path : str, root_path : str):
     rel_path_dict = get_rel_path_dict(abs_path_list=abs_path_list, root_path=root_path)
     rel_path_list = list(rel_path_dict.values())
-    template_path = get_template_csv()
+    template_path = ResourceProvider.get_template_csv()
 
     if os.path.isfile(target_path):
         print(f'Target CSV path {target_path} already exists. Aborting ...')

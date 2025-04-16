@@ -8,7 +8,7 @@ from PIL import Image
 
 
 if getattr(sys, 'frozen', False):
-    # noinspection PyProtectedMember
+    # noinspection PyProtectedMember,PyUnresolvedReferences
     base_path = sys._MEIPASS  # PyInstaller's base directory
 else:
     # The app is run as a script
