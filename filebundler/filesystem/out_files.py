@@ -3,7 +3,7 @@ import os
 import zipfile, csv
 from typing import List
 
-from filebundler.resources.resource_manager import get_template_csv
+from filebundler.resources.provider import get_template_csv
 
 
 # -------------------------------------------

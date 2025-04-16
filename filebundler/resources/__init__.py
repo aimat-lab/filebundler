@@ -1,1 +1,1 @@
-from .resource_manager import *
+from .provider import *

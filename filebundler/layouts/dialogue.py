@@ -13,7 +13,9 @@ from kivy.uix.popup import Popup
 from filebundler.configs import get_true_width, get_true_height
 from filebundler.elements.types import FocusTextInput
 from filebundler.filesystem import FsNode, get_initial_path
-from filebundler.resources.resource_manager import get_blended_logo_path, get_kivy_image
+from filebundler.resources import ResourceProvider
+
+
 # -------------------------------------------
 
 class InputDialog(Popup):
@@ -34,7 +36,7 @@ class InputDialog(Popup):
                                  padding=[h_space, v_space, h_space, v_space],
                                  spacing=v_space)
 
-        logo_image = get_kivy_image(width=Window.width*0.4, imgPath=get_blended_logo_path(), size_hint =(1,0.25))
+        logo_image = ResourceProvider.get_kivy_image(width=Window.width*0.4, imgPath=ResourceProvider.get_blended_logo_path(), size_hint =(1,0.25))
         first_hint = self.make_hint()
         self.format_input =self.make_format_input()
         second_hint = self.make_second_hint()

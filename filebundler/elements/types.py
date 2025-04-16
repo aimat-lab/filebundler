@@ -12,7 +12,7 @@ from kivy.uix.widget import Widget
 from filebundler.configs import get_scaled_down_app_width
 from typing import List
 
-from filebundler.resources.resource_manager import get_kivy_image, get_logo_path
+from filebundler.resources import ResourceProvider
 
 
 class FocusTextInput(TextInput):
@@ -90,8 +90,8 @@ class HeaderWidget(BoxLayout):
             valign="middle"
         )
         self.file_count_label.bind(size=self.file_count_label.setter('text_size'))
-        logo_image = get_kivy_image(width=get_scaled_down_app_width() * 0.3,
-                                    imgPath=get_logo_path(),
+        logo_image = ResourceProvider.get_kivy_image(width=get_scaled_down_app_width() * 0.3,
+                                    imgPath=ResourceProvider.get_logo_path(),
                                     size_hint=(0.3,1))
 
         left_placeholder = Widget(size_hint=(0.4, 1))

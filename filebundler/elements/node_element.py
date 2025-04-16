@@ -10,15 +10,15 @@ from filebundler.elements.node_widget import LabeledCheckBox, NodeWidget
 from filebundler.elements.loadable_element import LoadableElem
 from filebundler.filesystem import FsNode
 from filebundler.configs import get_line_height
-from filebundler.resources.resource_manager import get_fileicon_path, get_foldericon_path
+from filebundler.resources import ResourceProvider
 
 
 # -------------------------------------------
 
 class NodeElement(FsNode, LoadableElem):
     dim = get_line_height()
-    file_img = Image.open(fp=get_fileicon_path()).resize((dim, dim))
-    folder_img = Image.open(fp=get_foldericon_path()).resize((dim, dim))
+    file_img = Image.open(fp=ResourceProvider.get_fileicon_path()).resize((dim, dim))
+    folder_img = Image.open(fp=ResourceProvider.get_foldericon_path()).resize((dim, dim))
 
     @classmethod
     def make_child(cls, name : str, parent : NodeElement) -> NodeElement:

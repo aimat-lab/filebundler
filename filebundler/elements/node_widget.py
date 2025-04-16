@@ -13,8 +13,7 @@ from kivy.properties import BooleanProperty, ObjectProperty
 
 from filebundler.configs import get_line_height
 from filebundler.elements.types import BlackLabel
-from filebundler.resources.resource_manager import get_fileicon_path, get_foldericon_path, get_kivy_image, \
-    get_collapsed_icon_path, get_expanded_icon_path, get_checked_box_path, get_unchecked_box_path, get_empty_path
+from filebundler.resources import ResourceProvider
 
 
 # -------------------------------------------
@@ -47,7 +46,7 @@ class LabeledCheckBox(BoxLayout):
         self.check_box = ImageCheckBox(size_hint=(None, None), size=(self.height, self.height))
         self.check_box.bind(active=check_callback)
 
-        icon_path = get_fileicon_path() if is_file else get_foldericon_path()
+        icon_path = ResourceProvider.get_fileicon_path() if is_file else ResourceProvider.get_foldericon_path()
         self.icon = Image(source=icon_path, size_hint=(None, None), size=(self.height, self.height))
         self.add_widget(self.icon)
 
@@ -69,12 +68,12 @@ class IconToggleButton(RelativeLayout):
         super(IconToggleButton, self).__init__(**kwargs)
 
         height = self.height
-        self.collapsed = get_kivy_image(width=height, imgPath=get_collapsed_icon_path(),
+        self.collapsed = ResourceProvider.get_kivy_image(width=height, imgPath=ResourceProvider.get_collapsed_icon_path(),
                                         size_hint=(None, None),
                                         size=(height,height))
 
-        self.expanded = get_kivy_image(width=height,
-                                       imgPath=get_expanded_icon_path(),
+        self.expanded = ResourceProvider.get_kivy_image(width=height,
+                                       imgPath=ResourceProvider.get_expanded_icon_path(),
                                        size_hint=(None, None),
                                        size=(height,height))
 
@@ -104,11 +103,11 @@ class ImageCheckBox(CheckBox):
 
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
-        self.checked_image = CoreImage(get_checked_box_path()).texture
-        self.unchecked_image = CoreImage(get_unchecked_box_path()).texture
+        self.checked_image = CoreImage(ResourceProvider.get_checked_box_path()).texture
+        self.unchecked_image = CoreImage(ResourceProvider.get_unchecked_box_path()).texture
 
-        self.background_checkbox_down = get_empty_path()
-        self.background_checkbox_normal = get_empty_path()
+        self.background_checkbox_down = ResourceProvider.get_empty_path()
+        self.background_checkbox_normal = ResourceProvider.get_empty_path()
 
         with self.canvas:
             self.rect = Rectangle(texture=self.unchecked_image, pos=self.pos, size=self.size)
