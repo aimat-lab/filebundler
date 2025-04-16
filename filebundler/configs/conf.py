@@ -74,8 +74,16 @@ def get_primary_monitor():
     return None
 
 
-def get_primary_monitor_width():
-    return get_primary_monitor().width
+def get_primary_monitor_width() -> int:
+    monitor = get_primary_monitor()
+    if monitor:
+        return monitor.width
+    else:
+        return 1920
 
-def get_primary_monitor_height():
-    return get_primary_monitor().height
+def get_primary_monitor_height() -> int:
+    monitor = get_primary_monitor()
+    if monitor:
+        return monitor.height
+    else:
+        return 1080
