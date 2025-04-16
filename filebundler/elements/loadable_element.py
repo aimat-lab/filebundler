@@ -6,6 +6,7 @@ from typing import List
 from typing import Optional
 
 from filebundler.elements.node_widget import LabeledCheckBox
+from filebundler.resources.interval import Interval
 
 
 # -------------------------------------------
@@ -40,7 +41,7 @@ class LoadableElem:
 
     @staticmethod
     def get_nodes_in_interval(node : LoadableElem, interval : Interval) -> list:
-        start_y, end_y = interval
+        start_y, end_y = interval.lower, interval.upper
         selected_nodes = []
 
         def dfs(current_node):

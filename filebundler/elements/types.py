@@ -10,8 +10,10 @@ from kivy.core.window import Window
 
 from kivy.uix.widget import Widget
 from filebundler.configs import get_scaled_down_app_width
-from filebundler.resources import get_logo_path, get_kivy_image
 from typing import List
+
+from filebundler.resources.resource_manager import get_kivy_image, get_logo_path
+
 
 class FocusTextInput(TextInput):
     def keyboard_on_key_down(self, window, keycode, text, modifiers):

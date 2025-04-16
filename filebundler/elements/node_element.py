@@ -8,9 +8,11 @@ from kivy.uix.boxlayout import  BoxLayout
 from filebundler.elements.types import Placeholder
 from filebundler.elements.node_widget import LabeledCheckBox, NodeWidget
 from filebundler.elements.loadable_element import LoadableElem
-from filebundler.resources import get_foldericon_path, get_fileicon_path
 from filebundler.filesystem import FsNode
 from filebundler.configs import get_line_height
+from filebundler.resources.resource_manager import get_fileicon_path, get_foldericon_path
+
+
 # -------------------------------------------
 
 class NodeElement(FsNode, LoadableElem):

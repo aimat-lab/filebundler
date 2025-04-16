@@ -13,9 +13,9 @@ from kivy.properties import BooleanProperty, ObjectProperty
 
 from filebundler.configs import get_line_height
 from filebundler.elements.types import BlackLabel
+from filebundler.resources.resource_manager import get_fileicon_path, get_foldericon_path, get_kivy_image, \
+    get_collapsed_icon_path, get_expanded_icon_path, get_checked_box_path, get_unchecked_box_path, get_empty_path
 
-from filebundler.resources import get_unchecked_box_path, get_checked_box_path, get_fileicon_path, \
-    get_foldericon_path, get_collapsed_icon_path, get_expanded_icon_path, get_kivy_image, get_empty_path
 
 # -------------------------------------------
 

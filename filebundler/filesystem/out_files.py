@@ -1,8 +1,9 @@
-from filebundler.resources import get_template_csv
 
 import os
 import zipfile, csv
 from typing import List
+
+from filebundler.resources.resource_manager import get_template_csv
 
 
 # -------------------------------------------

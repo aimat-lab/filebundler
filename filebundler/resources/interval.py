@@ -29,5 +29,10 @@ class Interval:
             return [Interval(a1,a2)]
 
 
+    def __sub__(self, other):
+        if not isinstance(other, Interval):
+            raise TypeError("Subtraction is only supported between two Interval objects.")
+        return self.subtract(other)
+
     def __eq__(self, other):
         return self.lower == other.lower and self.upper == other.upper
