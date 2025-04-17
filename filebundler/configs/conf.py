@@ -1,5 +1,7 @@
 import sys
 import ctypes
+from dataclasses import dataclass
+
 from kivy.config import Config
 from screeninfo import get_monitors
 import logging
@@ -71,7 +73,7 @@ def get_primary_monitor():
     for monitor in monitors:
         if monitor.is_primary:
             return monitor
-    return None
+    return BackupMonitor()
 
 
 def get_primary_monitor_width() -> int:
@@ -87,3 +89,9 @@ def get_primary_monitor_height() -> int:
         return monitor.height
     else:
         return 1080
+
+
+@dataclass
+class BackupMonitor:
+    height : int = 1080
+    width : int = 1920
